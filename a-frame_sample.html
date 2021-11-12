@@ -1,14 +1,113 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+	<script>
+AFRAME.registerGeometry('box1', {
+  schema: {
+    depth: {default: 1, min: 0},
+    height: {default: 1, min: 0},
+    width: {default: 1, min: 0},
+    segmentsHeight: {default: 1, min: 1, max: 20, type: 'int'},
+    segmentsWidth: {default: 1, min: 1, max: 20, type: 'int'},
+    segmentsDepth: {default: 1, min: 1, max: 20, type: 'int'}
+  },
+
+  init: function (data) {
+    this.geometry = new THREE.BoxGeometry(data.width, data.height, data.depth);
+  }
+});
+
+AFRAME.registerGeometry('example', {
+  schema: {
+    vertices: {
+      default: [
+	  // front
+    { pos: [-1, -1,  1], norm: [ 0,  0,  1], uv: [0, 0], },
+    { pos: [ 1, -1,  1], norm: [ 0,  0,  1], uv: [1, 0], },
+    { pos: [-1,  1,  1], norm: [ 0,  0,  1], uv: [0, 1], },
+
+    { pos: [-1,  1,  1], norm: [ 0,  0,  1], uv: [0, 1], },
+    { pos: [ 1, -1,  1], norm: [ 0,  0,  1], uv: [1, 0], },
+    { pos: [ 1,  1,  1], norm: [ 0,  0,  1], uv: [1, 1], },
+    // right
+    { pos: [ 1, -1,  1], norm: [ 1,  0,  0], uv: [0, 0], },
+    { pos: [ 1, -1, -1], norm: [ 1,  0,  0], uv: [1, 0], },
+    { pos: [ 1,  1,  1], norm: [ 1,  0,  0], uv: [0, 1], },
+
+    { pos: [ 1,  1,  1], norm: [ 1,  0,  0], uv: [0, 1], },
+    { pos: [ 1, -1, -1], norm: [ 1,  0,  0], uv: [1, 0], },
+    { pos: [ 1,  1, -1], norm: [ 1,  0,  0], uv: [1, 1], },
+    // back
+    { pos: [ 1, -1, -1], norm: [ 0,  0, -1], uv: [0, 0], },
+    { pos: [-1, -1, -1], norm: [ 0,  0, -1], uv: [1, 0], },
+    { pos: [ 1,  1, -1], norm: [ 0,  0, -1], uv: [0, 1], },
+
+    { pos: [ 1,  1, -1], norm: [ 0,  0, -1], uv: [0, 1], },
+    { pos: [-1, -1, -1], norm: [ 0,  0, -1], uv: [1, 0], },
+    { pos: [-1,  1, -1], norm: [ 0,  0, -1], uv: [1, 1], },
+    // left
+    { pos: [-1, -1, -1], norm: [-1,  0,  0], uv: [0, 0], },
+    { pos: [-1, -1,  1], norm: [-1,  0,  0], uv: [1, 0], },
+    { pos: [-1,  1, -1], norm: [-1,  0,  0], uv: [0, 1], },
+
+    { pos: [-1,  1, -1], norm: [-1,  0,  0], uv: [0, 1], },
+    { pos: [-1, -1,  1], norm: [-1,  0,  0], uv: [1, 0], },
+    { pos: [-1,  1,  1], norm: [-1,  0,  0], uv: [1, 1], },
+    // top
+    { pos: [ 1,  1, -1], norm: [ 0,  1,  0], uv: [0, 0], },
+    { pos: [-1,  1, -1], norm: [ 0,  1,  0], uv: [1, 0], },
+    { pos: [ 1,  1,  1], norm: [ 0,  1,  0], uv: [0, 1], },
+
+    { pos: [ 1,  1,  1], norm: [ 0,  1,  0], uv: [0, 1], },
+    { pos: [-1,  1, -1], norm: [ 0,  1,  0], uv: [1, 0], },
+    { pos: [-1,  1,  1], norm: [ 0,  1,  0], uv: [1, 1], },
+    // bottom
+    { pos: [ 1, -1,  1], norm: [ 0, -1,  0], uv: [0, 0], },
+    { pos: [-1, -1,  1], norm: [ 0, -1,  0], uv: [1, 0], },
+    { pos: [ 1, -1, -1], norm: [ 0, -1,  0], uv: [0, 1], },
+
+    { pos: [ 1, -1, -1], norm: [ 0, -1,  0], uv: [0, 1], },
+    { pos: [-1, -1,  1], norm: [ 0, -1,  0], uv: [1, 0], },
+    { pos: [-1, -1, -1], norm: [ 0, -1,  0], uv: [1, 1], },
+	],
+    }
+  },
+
+  init: function (data) {
+    const geometry = new THREE.BufferGeometry();
+	
+	const positions = [];
+	const normals = [];
+	const uvs = [];
+	for (const vertex of data.vertices) {
+		positions.push(...vertex.pos);
+		normals.push(...vertex.norm);
+		uvs.push(...vertex.uv);
+	}
+	
+	const positionNumComponents = 3;
+  const normalNumComponents = 3;
+  const uvNumComponents = 2;
+  geometry.setAttribute(
+      'position',
+      new THREE.BufferAttribute(new Float32Array(positions), positionNumComponents));
+  geometry.setAttribute(
+      'normal',
+      new THREE.BufferAttribute(new Float32Array(normals), normalNumComponents));
+  geometry.setAttribute(
+      'uv',
+      new THREE.BufferAttribute(new Float32Array(uvs), uvNumComponents));
+	 
+    this.geometry = geometry;
+  }
+});
+	</script>	
   </head>
   <body>
     <a-scene>
-      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-      <a-sky color="#ECECEC"></a-sky>
+	  <a-entity geometry="primitive: example;" material="color: red" position="0 0.5 -4" rotation="0 0 0"></a-entity>
+
+	  <a-entity light="type: point; intensity: 2.0" position="-1 0 3" />
     </a-scene>
   </body>
 </html>
