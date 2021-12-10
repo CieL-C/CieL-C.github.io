@@ -45,6 +45,10 @@
 
 			AFRAME.utils.entity.setComponentProperty(entity1, 'value', 'Test Text');
 		  },
+		  
+		  tick: function (t, dt) {
+			this.throttledFunction();  // Called once a second.
+		   },
 		});
 
 		
