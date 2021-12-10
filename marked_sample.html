@@ -9,7 +9,7 @@
 			<a-text
 				id = "hiro-item"
 				value="GeoAR Test Polaris Office"
-				rotation="0 90 0"
+				rotation="0 45 0"
 				scale="120 120 120"
 			></a-text>
         </a-marker>
@@ -25,13 +25,26 @@
         </a-scene>
 		
 		<script>
-		var entity1 = document.querySelector('#hiro-item');
-		var entity2 = document.querySelector('#kanji-item');
 		
-		var positions1 = AFRAME.utils.entity.getComponentProperty(entity1, 'position');
-		var positions2 = AFRAME.utils.entity.getComponentProperty(entity2, 'position');
+		AFRAME.registerComponent('foo', {
+		  init: function () {
+			// Set up throttling.
+			this.throttledFunction = AFRAME.utils.throttle(this.everySecond, 1000, this);
+		  },
+
+		  everySecond: function () {
+			// Called every second.
+			var entity1 = document.querySelector('#hiro-item');
+			var entity2 = document.querySelector('#kanji-item');
+			
+			var positions1 = AFRAME.utils.entity.getComponentProperty(entity1, 'position');
+			var positions2 = AFRAME.utils.entity.getComponentProperty(entity2, 'position');
+			
+			AFRAME.utils.entity.setComponentProperty(entity, 'value', positions1);
+		  },
+		});
+
 		
-		AFRAME.utils.entity.setComponentProperty(entity, 'value', positions1);
 		
 		</script>
     </body>
