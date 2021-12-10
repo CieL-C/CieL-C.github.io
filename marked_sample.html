@@ -6,15 +6,16 @@
     <body style="margin : 0px; overflow: hidden;">
         <a-scene embedded arjs>
         <a-marker preset="hiro">
-            <a-entity
-            position="0 0 0"
-            rotation="0 0 0"
-            scale="0.05 0.05 0.05"
-            gltf-model="./image-tracking/nft/trex/scene.gltf"
-            ></a-entity>
+			<a-text
+				id = "hiro-item"
+				value="GeoAR Test Polaris Office"
+				rotation="0 90 0"
+				scale="120 120 120"
+			></a-text>
         </a-marker>
 		<a-marker preset="kanji">
             <a-box
+			id = "kanji-item"
             position="0 0 0"
             rotation="0 0 0"
 			color="yellow"
@@ -22,5 +23,17 @@
         </a-marker>
         <a-entity camera></a-entity>
         </a-scene>
+		
+		<script>
+		var entity1 = document.querySelector('#hiro-item');
+		var entity2 = document.querySelector('#kanji-item');
+		
+		var positions1 = AFRAME.utils.entity.getComponentProperty(entity1, 'position');
+		var positions2 = AFRAME.utils.entity.getComponentProperty(entity2, 'position');
+		
+		AFRAME.utils.entity.setComponentProperty(entity, 'value', positions1);
+		
+		</script>
     </body>
 </html>
+
