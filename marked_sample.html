@@ -43,8 +43,11 @@
 			const d = new Date();
 			let time = d.getTime();
 
-			AFRAME.utils.entity.setComponentProperty(entity1, 'color', color2);
-			AFRAME.utils.entity.setComponentProperty(entity2, 'color', color1);
+			if(time%1000 == 0)
+			{
+				AFRAME.utils.entity.setComponentProperty(entity1, 'color', color2);
+				AFRAME.utils.entity.setComponentProperty(entity2, 'color', color1);
+			}
 		  },
 		  
 		  tick: function (t, dt) {
