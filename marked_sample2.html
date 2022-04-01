@@ -143,6 +143,19 @@
 	});
 	var mesh	= new THREE.Mesh( geometry, material );
 	markerRoot2.add( mesh );
+	
+	const loader = new GLTFLoader();
+	
+	loader.load('wolf.glb',
+		function( glb ) {
+			markerRoot2.add(glb.scene);
+		}, 
+		undefined, 
+		function ( error ) {
+			console.error( error );
+		} 
+	);
+		
 })()
 
 
