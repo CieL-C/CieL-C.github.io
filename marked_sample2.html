@@ -176,9 +176,11 @@
 	// update lineMesh
 	onRenderFcts.push(function(){
 		var geometry = lineMesh.geometry
-		geometry.vertices[0].copy(markerRoot1.position)
-		geometry.vertices[1].copy(markerRoot2.position)
-		geometry.verticesNeedUpdate = true
+
+        geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array([markerRoot1.position[0], markerRoot1.position[1], markerRoot1.position[2], markerRoot2.position[0], markerRoot2.position[1], markerRoot2.position[2]]), 3));
+		//geometry.vertices[0].copy(markerRoot1.position)
+		//geometry.vertices[1].copy(markerRoot2.position)
+		//geometry.verticesNeedUpdate = true
 
 		geometry.computeBoundingSphere();
 		lineMesh.computeLineDistances();
