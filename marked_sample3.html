@@ -2,11 +2,12 @@
 <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 <!-- three.js library -->
 <script src='./js/three.js'></script>
-<script src='https://threejs.org/examples/jsm/loaders/GLTFLoader.js'></script>
+<!-- <script src='https://threejs.org/examples/jsm/loaders/GLTFLoader.js'></script> -->
 <script src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex.js'></script>
 
 <body>
-<script>
+<script type="module">
+import { GLTFLoader } from './js/GLTFLoader.js';
 	//////////////////////////////////////////////////////////////////////////////////
 	//		Init
 	//////////////////////////////////////////////////////////////////////////////////
@@ -143,96 +144,7 @@
 
 
 ;
-<!-- (function(){ -->
-	<!-- var markerRoot1 = scene.getObjectByName('marker1') -->
-	<!-- var markerRoot2 = scene.getObjectByName('marker2') -->
 
-	<!-- var container = new THREE.Group -->
-	<!-- scene.add(container) -->
-
-	<!-- // update container.visible and scanningSpinner visibility -->
-	<!-- onRenderFcts.push(function(){ -->
-		<!-- if( markerRoot1.visible === true && markerRoot2.visible === true ){ -->
-			<!-- container.visible = true -->
-			<!-- document.querySelector('.scanningSpinner').style.display = 'none' -->
-		<!-- }else{ -->
-			<!-- container.visible = false -->
-			<!-- document.querySelector('.scanningSpinner').style.display = '' -->
-		<!-- } -->
-	<!-- }) -->
-
-	<!-- ////////////////////////////////////////////////////////////////////////////// -->
-	<!-- //		build lineMesh -->
-	<!-- ////////////////////////////////////////////////////////////////////////////// -->
-	<!-- var material = new THREE.LineDashedMaterial( { -->
-		<!-- dashSize: 1, -->
-		<!-- gapSize: 1, -->
-	<!-- } ); -->
-	<!-- var geometry = new THREE.BufferGeometry(); -->
-	<!-- geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array([1, 0, -3, -1, 0, -3]), 3)); -->
-	<!-- //geometry.attributes.position[0].copy(new THREE.Vector3(1, 0, -3)); -->
-    <!-- //geometry.attributes.position[1].copy(new THREE.Vector3(-1, 0, -3)); -->
-	<!-- //geometry.vertices.push(new THREE.Vector3(1, 0, -3)); -->
-	<!-- //geometry.vertices.push(new THREE.Vector3(-1, 0, -3)); -->
-	<!-- var lineMesh = new THREE.Line(geometry, material); -->
-	<!-- container.add(lineMesh) -->
-
-	<!-- // update lineMesh -->
-	<!-- onRenderFcts.push(function(){ -->
-		<!-- var geometry = lineMesh.geometry -->
-
-        <!-- geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array([markerRoot1.position[0], markerRoot1.position[1], markerRoot1.position[2], markerRoot2.position[0], markerRoot2.position[1], markerRoot2.position[2]]), 3)); -->
-		<!-- //geometry.vertices[0].copy(markerRoot1.position) -->
-		<!-- //geometry.vertices[1].copy(markerRoot2.position) -->
-		<!-- //geometry.verticesNeedUpdate = true -->
-
-		<!-- geometry.computeBoundingSphere(); -->
-		<!-- lineMesh.computeLineDistances(); -->
-
-		<!-- var length = markerRoot1.position.distanceTo(markerRoot2.position) -->
-		<!-- lineMesh.material.scale = length * 10 -->
-		<!-- lineMesh.material.needsUpdate = true -->
-	<!-- }) -->
-
-
-	<!-- ////////////////////////////////////////////////////////////////////////////// -->
-	<!-- //		display the distance between the 2 markers -->
-	<!-- ////////////////////////////////////////////////////////////////////////////// -->
-
-	<!-- // build texture -->
-	<!-- var canvas = document.createElement( 'canvas' ); -->
-	<!-- canvas.width = 128; -->
-	<!-- canvas.height = 64; -->
-	<!-- var context = canvas.getContext( '2d' ); -->
-	<!-- var texture = new THREE.CanvasTexture( canvas ); -->
-
-	<!-- // build sprite -->
-	<!-- var material = new THREE.SpriteMaterial({ -->
-		<!-- map: texture, -->
-		<!-- color: 0xffffff, -->
-	<!-- }); -->
-	<!-- var sprite = new THREE.Sprite( material ); -->
-	<!-- sprite.scale.multiplyScalar(0.5) -->
-	<!-- container.add(sprite) -->
-
-	<!-- // upload measure -->
-	<!-- onRenderFcts.push(function(){ -->
-		<!-- // update sprite position -->
-		<!-- sprite.position.addVectors(markerRoot1.position, markerRoot2.position).multiplyScalar(1/2) -->
-
-		<!-- // get the text to display -->
-		<!-- var length = markerRoot1.position.distanceTo(markerRoot2.position) -->
-		<!-- var text = length.toFixed(2) -->
-
-		<!-- // put the text in the sprite -->
-		<!-- context.font = '40px monospace'; -->
-		<!-- context.clearRect( 0, 0, canvas.width, canvas.height ); -->
-		<!-- context.fillStyle = '#fff'; -->
-		<!-- context.fillText(text, canvas.width/4, 3*canvas.height/4 ) -->
-		<!-- sprite.material.map.needsUpdate = true -->
-	<!-- }) -->
-
-<!-- })() -->
 	//////////////////////////////////////////////////////////////////////////////////
 	//		render the whole thing on the page
 	//////////////////////////////////////////////////////////////////////////////////
