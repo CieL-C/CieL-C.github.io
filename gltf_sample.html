@@ -11,7 +11,7 @@
 	loader.load('./glb/wolf.glb',
 	function ( gltf ) {
 
-		scene.add( gltf.scene );
+		//scene.add( gltf.scene );
 
 		gltf.animations; // Array<THREE.AnimationClip>
 		gltf.scene; // THREE.Group
@@ -23,7 +23,7 @@
 		// called while loading is progressing
 	function ( xhr ) {
 
-		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+		//console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
 
 	},
 	// called when loading has errors
