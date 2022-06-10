@@ -1,9 +1,10 @@
 <html>
   <head>
-	<script src='./js/three.js'></script>
-	<script src='./js/GLTFLoader.js'></script>
 	<script>
 	
+import * as THREE from 'three';
+import GLTFLoader from 'three-gltf-loader';
+
 	var scene = new THREE.Scene();
 	
 	var camera = new THREE.Camera();
@@ -11,7 +12,7 @@
 
 	const loader = new THREE.GLTFLoader();
 	
-	loader.load('https://ciel-c.github.io/glb/wolf.glb',
+	loader.load('./glb/wolf.glb',
 	function ( gltf ) {
 
 		scene.add( gltf.scene );
