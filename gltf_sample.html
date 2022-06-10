@@ -5,13 +5,16 @@
 	<script>
 	
 	var scene = new THREE.Scene();
+	
+	var camera = new THREE.Camera();
+	scene.add(camera);
 
 	const loader = new THREE.GLTFLoader();
 	
 	loader.load('./glb/wolf.glb',
 	function ( gltf ) {
 
-		//scene.add( gltf.scene );
+		scene.add( gltf.scene );
 
 		gltf.animations; // Array<THREE.AnimationClip>
 		gltf.scene; // THREE.Group
