@@ -1,13 +1,11 @@
 <html>
   <head>
-
   </head>
   <body>
+	<script src='./js/three.js'></script>
+	<script src="https://r105.threejsfundamentals.org/threejs/resources/threejs/r105/js/loaders/GLTFLoader.js"></script>
 	<script>
 	
-import * as THREE from 'three';
-import GLTFLoader from 'three-gltf-loader';
-
 	var scene = new THREE.Scene();
 	
 	var camera = new THREE.Camera();
@@ -15,7 +13,7 @@ import GLTFLoader from 'three-gltf-loader';
 
 	const loader = new THREE.GLTFLoader();
 	
-	loader.load('./glb/wolf.glb',
+	loader.load('https://ciel-c.github.io/glb/wolf.glb',
 	function ( gltf ) {
 
 		scene.add( gltf.scene );
