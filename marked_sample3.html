@@ -138,6 +138,18 @@
 		
 })()
 ;
+(function(){
+	// update container.visible and scanningSpinner visibility
+	onRenderFcts.push(function(){
+		if( markerRoot1.visible === true ){
+			document.querySelector('.scanningSpinner').style.display = 'none'
+		}else{
+			document.querySelector('.scanningSpinner').style.display = ''
+		}
+	})
+
+})()
+;
 	//////////////////////////////////////////////////////////////////////////////////
 	//		render the whole thing on the page
 	//////////////////////////////////////////////////////////////////////////////////
