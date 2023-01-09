@@ -111,7 +111,9 @@
 	
 		let geometry1	= new THREE.BoxGeometry(2,2,2);
 	let loader = new THREE.TextureLoader();
-	let texture = loader.load( 'images/tiles.jpg', render );
+	let texture = loader.load( 'images/tiles.jpg', function(){
+		renderer.render( scene, camera );
+	} );
 	let material1	= new THREE.MeshLambertMaterial({
 		transparent : true,
 		map: texture,
