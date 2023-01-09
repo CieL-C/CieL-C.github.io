@@ -111,8 +111,7 @@
 		const geometry = new THREE.BufferGeometry();
 		
 		vertices: {
-		  default: [
-		  // front
+		   // front
 		{ pos: [-1, -1,  1], norm: [ 0,  0,  1] },
 		{ pos: [ 1, -1,  1], norm: [ 0,  0,  1] },
 		{ pos: [-1,  1,  1], norm: [ 0,  0,  1] },
@@ -145,15 +144,15 @@
 		{ pos: [-1, -1,  1], norm: [-1,  0,  0] },
 		{ pos: [-1,  1,  1], norm: [-1,  0,  0] },
 
-		// bottom
-		{ pos: [ 1, -1,  1], norm: [ 0, -1,  0] },
-		{ pos: [-1, -1,  1], norm: [ 0, -1,  0] },
-		{ pos: [ 1, -1, -1], norm: [ 0, -1,  0] },
-
-		{ pos: [ 1, -1, -1], norm: [ 0, -1,  0] },
-		{ pos: [-1, -1,  1], norm: [ 0, -1,  0] },
-		{ pos: [-1, -1, -1], norm: [ 0, -1,  0] },
-		],
+		// top
+		{ pos: [ 1, -1,  1], norm: [ 0,  1,  0] },
+		{ pos: [-1, -1,  1], norm: [ 0,  1,  0] },
+		{ pos: [ 1, -1, -1], norm: [ 0,  1,  0] },
+          
+		{ pos: [ 1, -1, -1], norm: [ 0,  1,  0] },
+		{ pos: [-1, -1,  1], norm: [ 0,  1,  0] },
+		{ pos: [-1, -1, -1], norm: [ 0,  1,  0] },
+		,
 		}
 		
 		const positions = [];
