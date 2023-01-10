@@ -27,26 +27,7 @@
 		
 		<script>
 		
-		AFRAME.registerComponent('foo', {
-		  init: function () {
-			// Set up throttling.
-			this.throttledFunction = AFRAME.utils.throttle(this.everySecond, 1000, this);
-		  },
 
-		  everySecond: function () {
-			// Called every second.
-			var entity1 = document.querySelector('#hiro-item');
-			var entity2 = document.querySelector('#kanji-item');
-			
-			var rot = AFRAME.utils.entity.getComponentProperty(entity1, 'rotation');			
-		  },
-		  
-		  tick: function (t, dt) {
-			this.throttledFunction();  // Called once a second.
-		   },
-		   
-		   //requestAnimationFrame(everySecond);
-		});
 
 		
 		
