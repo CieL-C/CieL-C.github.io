@@ -15,10 +15,17 @@
       embedded
       arjs="sourceType: webcam; debugUIEnabled: false;"
     >
-	  <a-text
-        value="Polaris Office"
+	  <a-image
+        src="./images/PO.png"
         look-at="[gps-camera]"
-        scale="20 20 20"
+        scale="10 10 10"
+        gps-entity-place="latitude: 37.48533; longitude: 126.89506;"
+      ></a-text>
+	  <a-text
+        value="    Polaris Office"
+		color="blue"
+        look-at="[gps-camera]"
+        scale="10 10 10"
         gps-entity-place="latitude: 37.48533; longitude: 126.89506;"
       ></a-text>
       <a-camera gps-camera rotation-reader> </a-camera>
