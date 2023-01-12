@@ -23,7 +23,7 @@
       ></a-image>
 	  <a-text
 		id = "text"
-        value="Polaris Office"
+        value="Default"
 		color="blue"
         look-at="[gps-camera]"
         scale="10 10 10"
@@ -39,7 +39,7 @@
           if(event.detail.distance < 100) {
             text.setAttribute('value','Polaris Office');
           } else {
-            text.setAttribute('value',''+event.detail.distance+'m');
+            text.setAttribute('value', text.getAttribute('distanceMsg') + ' left');
           }
         });
       });
