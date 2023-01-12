@@ -7,24 +7,11 @@
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-	<style>
-      #debug {
-        position: fixed;
-        z-index: 10000;
-        background-color: #fff;
-        padding: 10px;
-        top: 0;
-        left: 0;
-        display: block;
-      }
-    </style>
   </head>
 
   <body>
-    <div id="debug"></div>
     <a-scene
       vr-mode-ui="enabled: false"
-	  embedded
       arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
     >
 	  <a-image
@@ -35,8 +22,7 @@
         gps-entity-place="latitude: 37.48533; longitude: 126.89506;"
       ></a-image>
 	  <a-text
-		id = "text"
-        value="1"
+        value="Polaris Office"
 		color="blue"
         look-at="[gps-camera]"
         scale="10 10 10"
@@ -44,21 +30,5 @@
       ></a-text>
       <a-camera gps-camera rotation-reader> </a-camera>
     </a-scene>
-	<script>
-      window.addEventListener('load', () => {
-		const text = document.getElementById('text');
-            text.setAttribute('value', 'loaded');
-        const el = document.querySelector('[gps-entity-place]');
-        text.addEventListener('gps-entity-place-update-positon', (event) => {
-		  document.getElementById('debug').textContent = '${event.detail.distance}m';
-		  text.setAttribute('value', 'update-position');
-          if(event.detail.distance < 100) {
-            text.setAttribute('value','Polaris Office here');
-          } else {
-            text.setAttribute('value', document.querySelector('[gps-entity-place]').getAttribute('distanceMsg') + ' left');
-          }
-        });
-      });
-    </script>
   </body>
 </html>
