@@ -48,13 +48,7 @@
         text2.setAttribute('value', 'loaded Home');
 		
 		text2.addEventListener('gps-entity-place-update-positon', (event) => {
-		  document.getElementById('debug').textContent = '${event.detail.distance}m';
-		  text2.setAttribute('value', 'update-position');
-          if(event.detail.distance < 100) {
-            text2.setAttribute('value','Home here');
-          } else {
-            text2.setAttribute('value', document.querySelector('[gps-entity-place]').getAttribute('distanceMsg') + ' left');
-          }
+          text2.setAttribute('value', 'home ' + document.querySelector('[gps-entity-place]').getAttribute('distanceMsg') + ' left');
         });
 		
       });
