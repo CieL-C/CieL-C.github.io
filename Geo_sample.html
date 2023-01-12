@@ -38,20 +38,7 @@
         scale="10 10 10"
         gps-entity-place="latitude: 37.47983; longitude: 126.85171;"
       ></a-text>
-      <a-camera gps-camera="minDistance:30; maxDistance:100" rotation-reader> </a-camera>
+      <a-camera gps-camera rotation-reader> </a-camera>
     </a-scene>
-	<script>
-      window.addEventListener('load', () => {
-		const text = document.getElementById('text');
-        text.setAttribute('value', 'loaded PO');
-		const text2 = document.getElementById('text2');
-        text2.setAttribute('value', 'loaded Home');
-		
-		text2.addEventListener('gps-entity-place-update-positon', (event) => {
-          text2.setAttribute('value', 'home ' + document.querySelector('[gps-entity-place]').getAttribute('distanceMsg') + ' left');
-        });
-		
-      });
-    </script>
   </body>
 </html>
