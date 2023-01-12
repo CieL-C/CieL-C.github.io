@@ -23,13 +23,13 @@
       ></a-image>
 	  <a-text
 		id = "text"
-        value="Default"
+        value="Default2"
 		color="blue"
         look-at="[gps-camera]"
         scale="10 10 10"
         gps-entity-place="latitude: 37.48533; longitude: 126.89506;"
       ></a-text>
-      <a-camera gps-camera rotation-reader> </a-camera>
+      <a-camera gps-camera="minDistance:30; maxDistance:1000" rotation-reader> </a-camera>
     </a-scene>
 	<script>
       window.addEventListener('load', () => {
@@ -39,7 +39,7 @@
           if(event.detail.distance < 100) {
             text.setAttribute('value','Polaris Office');
           } else {
-            text.setAttribute('value', text.getAttribute('distanceMsg') + ' left');
+            text.setAttribute('value', document.querySelector('[gps-entity-place]').getAttribute('distanceMsg') + ' left');
           }
         });
       });
