@@ -22,6 +22,7 @@
         gps-entity-place="latitude: 37.48533; longitude: 126.89506;"
       ></a-image>
 	  <a-text
+		id = "text"
         value="Polaris Office"
 		color="blue"
         look-at="[gps-camera]"
@@ -32,12 +33,13 @@
     </a-scene>
 	<script>
       window.addEventListener('load', () => {
+		const text = document.getElementById('text');
         const el = document.querySelector('[gps-entity-place]');
-        el.addEventListener('gps-entity-place-update-positon', (event) => {
+        text.addEventListener('gps-entity-place-update-positon', (event) => {
           if(event.detail.distance < 100) {
-            el.setAttribute('value','Polaris Office');
+            text.setAttribute('value','Polaris Office');
           } else {
-            el.setAttribute('value',''+event.detail.distance+'m');
+            text.setAttribute('value',''+event.detail.distance+'m');
           }
         });
       });
