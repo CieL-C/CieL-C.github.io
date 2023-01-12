@@ -9,11 +9,11 @@
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
   </head>
 
-  <body>
+  <body style="margin: 0; overflow: hidden;">
     <a-scene
       vr-mode-ui="enabled: false"
-	  embedded
-      arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
+      embedded
+      arjs="sourceType: webcam; debugUIEnabled: false;"
     >
 	  <a-image
         src="./images/PO.png"
@@ -23,20 +23,11 @@
         gps-entity-place="latitude: 37.48533; longitude: 126.89506;"
       ></a-image>
 	  <a-text
-		id="text"
-        value="1"
+        value="    Polaris Office"
 		color="blue"
         look-at="[gps-camera]"
         scale="10 10 10"
         gps-entity-place="latitude: 37.48533; longitude: 126.89506;"
-      ></a-text>
-	  <a-text
-		id="text"
-        value="home"
-		color="blue"
-        look-at="[gps-camera]"
-        scale="10 10 10"
-        gps-entity-place="latitude: 37.47983; longitude: 126.85171;"
       ></a-text>
       <a-camera gps-camera rotation-reader> </a-camera>
     </a-scene>
