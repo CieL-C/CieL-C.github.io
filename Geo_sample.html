@@ -24,7 +24,7 @@
       ></a-image>
 	  <a-text
 		id="text"
-        value="1"
+        value="Default"
 		color="blue"
         look-at="[gps-camera]"
         scale="10 10 10"
@@ -40,5 +40,11 @@
       ></a-text>
       <a-camera gps-camera="minDistance:30; maxDistance:100" rotation-reader> </a-camera>
     </a-scene>
+	<script>
+      window.addEventListener('load', () => {
+		const text = document.getElementById('text');
+        text.setAttribute('value', 'loaded');
+      });
+    </script>
   </body>
 </html>
