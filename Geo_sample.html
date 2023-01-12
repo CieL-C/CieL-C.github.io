@@ -24,7 +24,7 @@
       ></a-image>
 	  <a-text
 		id="text"
-        value="3"
+        value="1"
 		color="blue"
         look-at="[gps-camera]"
         scale="10 10 10"
@@ -36,9 +36,6 @@
       window.addEventListener('load', () => {
 		const text = document.getElementById('text');
         text.setAttribute('value', 'loaded');
-		  text.addEventListener('gps-entity-place-update-positon', (event) => {
-		  text.setAttribute('value', 'update-position');
-        });
       });
     </script>
   </body>
