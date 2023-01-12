@@ -31,9 +31,9 @@
         gps-entity-place="latitude: 37.48533; longitude: 126.89506;"
       ></a-text>
 	  <a-text
-		id="text"
+		id="text2"
         value="home"
-		color="blue"
+		color="red"
         look-at="[gps-camera]"
         scale="10 10 10"
         gps-entity-place="latitude: 37.47983; longitude: 126.85171;"
@@ -44,6 +44,8 @@
       window.addEventListener('load', () => {
 		const text = document.getElementById('text');
         text.setAttribute('value', 'loaded');
+		const text2 = document.getElementById('text2');
+        text2.setAttribute('value', 'My Home');
       });
     </script>
   </body>
