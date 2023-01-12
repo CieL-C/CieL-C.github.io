@@ -10,6 +10,7 @@
   </head>
 
   <body>
+    <div id="debug"></div>
     <a-scene
       vr-mode-ui="enabled: false"
       arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
@@ -23,7 +24,7 @@
       ></a-image>
 	  <a-text
 		id = "text"
-        value="Default2"
+        value="3"
 		color="blue"
         look-at="[gps-camera]"
         scale="10 10 10"
@@ -36,6 +37,7 @@
 		const text = document.getElementById('text');
         const el = document.querySelector('[gps-entity-place]');
         text.addEventListener('gps-entity-place-update-positon', (event) => {
+		  document.getElementById('debug').textContent = `${event.detail.distance}m`;
           if(event.detail.distance < 100) {
             text.setAttribute('value','Polaris Office');
           } else {
