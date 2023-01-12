@@ -24,7 +24,7 @@
       ></a-image>
 	  <a-text
 		id="text"
-        value="Default"
+        value="Polaris Office"
 		color="blue"
         look-at="[gps-camera]"
         scale="10 10 10"
@@ -32,13 +32,13 @@
       ></a-text>
 	  <a-text
 		id="text2"
-        value="home"
+        value="Simon's Home"
 		color="red"
         look-at="[gps-camera]"
         scale="10 10 10"
         gps-entity-place="latitude: 37.47983; longitude: 126.85171;"
       ></a-text>
-      <a-camera gps-camera rotation-reader> </a-camera>
+      <a-camera gps-camera="minDistance:30; maxDistance:100" rotation-reader> </a-camera>
     </a-scene>
   </body>
 </html>
