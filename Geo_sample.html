@@ -25,25 +25,33 @@
     <a-scene
       vr-mode-ui="enabled: false"
 	  embedded
-      arjs="sourceType: webcam; debugUIEnabled: false;"
+      arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
     >
+	  <a-image
+        src="./images/PO.png"
+        look-at="[gps-camera]"
+        scale="30 10 10"
+		position="60 0 0"
+        gps-entity-place="latitude: 37.48533; longitude: 126.89506;"
+      ></a-image>
 	  <a-text
 		id = "text"
-        value="2"
+        value="3"
 		color="blue"
         look-at="[gps-camera]"
         scale="10 10 10"
         gps-entity-place="latitude: 37.48533; longitude: 126.89506;"
       ></a-text>
-      <a-camera gps-camera rotation-reader> </a-camera>
+      <a-camera gps-camera="maxDistance:1000" rotation-reader> </a-camera>
     </a-scene>
 	<script>
       window.addEventListener('load', () => {
 		const text = document.getElementById('text');
-            text.setAttribute('value', document.querySelector('[gps-entity-place]').getAttribute('distanceMsg') + ' left');
+            text.setAttribute('value', 'loaded');
         const el = document.querySelector('[gps-entity-place]');
         text.addEventListener('gps-entity-place-update-positon', (event) => {
-		  document.getElementById('debug').textContent = `${event.detail.distance}m`;
+		  document.getElementById('debug').textContent = '${event.detail.distance}m';
+		  text.setAttribute('value', 'update-position');
           if(event.detail.distance < 100) {
             text.setAttribute('value','Polaris Office here');
           } else {
